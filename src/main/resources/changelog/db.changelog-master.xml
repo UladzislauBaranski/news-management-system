@@ -1,0 +1,2041 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="vladbaransky@gmail.com">
+        <createTable tableName="user">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="login" type="varchar(255)"/>
+            <column name="password" type="varchar(255)"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="last_name" type="varchar(255)"/>
+            <column name="role" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="2" author="vladbaransky@gmail.com">
+        <createTable tableName="news">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="date" type="timestamp"/>
+            <column name="title" type="varchar(255)"/>
+            <column name="text" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="vladbaransky@gmail.com">
+        <createTable tableName="comment">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="date" type="timestamp"/>
+            <column name="text" type="varchar(255)"/>
+            <column name="username" type="varchar(255)"/>
+
+            <column name="id_news" type="BIGINT">
+                <constraints primaryKey="true"
+                             foreignKeyName="fk_comment"
+                             referencedTableName="news"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="4" author="vladbaransky@gmail.com">
+        <insert tableName="user">
+            <column name="login" value="admin"/>
+            <column name="password" value="$2a$12$JoZj8k4qGbrgFpoG4yNRU.uvkG3K37gaQHBJg520nIPvkurI8Z8ny"/>  <!--admin-->
+            <column name="name" value="admin"/>
+            <column name="last_name" value="vadmin"/>
+            <column name="role" value="admin"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="5" author="vladbaransky@gmail.com">
+        <insert tableName="user">
+            <column name="login" value="journalist"/>
+            <column name="password"
+                    value="$2a$12$zV.CmQ2Wfuf3m7ap0zD6reY8cK1HpUmFcKogvIhm0ugiwKydhK2te"/>   <!--journalist-->
+            <column name="name" value="journalist"/>
+            <column name="last_name" value="journalist"/>
+            <column name="role" value="journalist"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="6" author="vladbaransky@gmail.com">
+        <insert tableName="user">
+            <column name="login" value="subscriber"/>
+            <column name="password"
+                    value="$2a$12$N1xAbKZD0Q.ZFE51C9KUQe8NV.yYd4FTLkKpN2oSDhtFFTbKWGClC"/>  <!--subscriber-->
+            <column name="name" value="subscriber"/>
+            <column name="last_name" value="subscriber"/>
+            <column name="role" value="subscriber"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="7" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 1"/>
+            <column name="text" value="test text 1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="8" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 2"/>
+            <column name="text" value="test text 2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="9" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 3"/>
+            <column name="text" value="test text 3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="10" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 4"/>
+            <column name="text" value="test text 4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="11" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 5"/>
+            <column name="text" value="test text 5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="12" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 6"/>
+            <column name="text" value="test text 6"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="13" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 7"/>
+            <column name="text" value="test text 7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="14" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 8"/>
+            <column name="text" value="test text 8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="15" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 9"/>
+            <column name="text" value="test text 9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="16" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 10"/>
+            <column name="text" value="test text 10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="17" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 11"/>
+            <column name="text" value="test text 11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="18" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 12"/>
+            <column name="text" value="test text 12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="19" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 13"/>
+            <column name="text" value="test text 13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 14"/>
+            <column name="text" value="test text 14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="21" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 15"/>
+            <column name="text" value="test text 15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="22" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 16"/>
+            <column name="text" value="test text 16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="23" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 17"/>
+            <column name="text" value="test text 17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="24" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 18"/>
+            <column name="text" value="test text 18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="25" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 19"/>
+            <column name="text" value="test text 19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="26" author="vladbaransky@gmail.com">
+        <insert tableName="news">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="title" value="test title 20"/>
+            <column name="text" value="test text 20"/>
+        </insert>
+    </changeSet>
+
+
+    <changeSet id="27" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="28" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="29" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="30" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="31" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="32" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="33" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="34" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="35" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="36" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="37" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="38" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="39" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="40" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="41" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="42" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="43" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="44" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="45" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="46" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="47" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="48" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="49" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="50" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="51" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="52" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="53" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="54" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="55" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="56" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="57" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="58" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="59" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="60" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="61" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="62" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="63" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="64" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="65" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="66" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="67" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="68" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="69" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="70" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="71" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="72" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="73" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="74" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="75" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="76" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="77" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="6"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="78" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="6"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="79" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="6"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="80" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="6"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="81" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="6"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="82" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="6"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="83" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="6"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="84" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="6"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="85" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="6"/>
+        </insert>
+    </changeSet>
+    <changeSet id="86" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="6"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="87" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="7"/>
+        </insert>
+    </changeSet>
+    <changeSet id="88" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="89" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="90" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="91" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="92" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="93" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="94" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="95" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="96" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="97" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="98" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="99" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="100" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="101" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="102" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="103" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="104" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="105" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="106" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="8"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="107" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="108" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="109" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="110" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="111" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="112" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="113" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="114" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="115" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="116" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="117" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="118" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="119" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="120" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="121" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="122" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="123" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="124" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="125" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="126" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="10"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="127" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="128" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="129" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="130" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="131" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="132" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="133" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="134" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="135" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="136" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="137" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="138" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="139" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="140" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="141" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="142" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="143" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="144" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="145" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="146" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="147" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="148" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="149" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="150" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="151" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="152" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="153" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="154" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="155" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="156" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="13"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="157" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="158" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="159" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="160" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="161" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="162" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="163" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="164" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="165" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="166" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="14"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="167" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="168" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="169" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="170" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="171" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="172" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="173" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="174" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="175" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="176" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="15"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="177" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="178" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="179" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="180" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="181" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="182" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="183" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="184" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="185" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="186" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="187" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="188" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="189" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="190" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="191" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="192" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="193" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="194" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="195" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="196" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="17"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="197" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="198" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="199" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="200" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="201" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="202" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="203" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="204" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="205" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="206" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="18"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="207" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="208" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="209" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="210" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="211" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="212" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="213" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="214" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="215" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="216" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="19"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="217" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="20"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="218" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="20"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="219" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="20"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="220" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="20"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="221" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="20"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="222" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="20"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="223" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="20"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="224" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="20"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="225" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="20"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="226" author="vladbaransky@gmail.com">
+        <insert tableName="comment">
+            <column name="date" value="2021-08-09 12:12:12"/>
+            <column name="text" value="test text"/>
+            <column name="username" value="username"/>
+            <column name="id_news" value="20"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
